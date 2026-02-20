@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/styles.css" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <div class="page">
+      <header class="page-header">
+        <h1><%= title %></h1>
+        <a class="button" href="/new">Add new message</a>
+      </header>
+
+      <main class="stack">
+        <% for (let i = 0; i < messages.length; i++) { %>
+          <article class="card message-card">
+            <h2 class="message-author"><%= messages[i].user %></h2>
+            <p class="message-text"><%= messages[i].text %></p>
+            <p class="message-date"><%= messages[i].added.toLocaleString() %></p>
+            <a class="link-chip" href="/messages/<%= i %>">Open</a>
+          </article>
+        <% } %>
+      </main>
+    </div>
+  </body>
+</html>
