@@ -11,7 +11,12 @@ app.use(express.static(assetsPath));
 app.use(express.urlencoded({ extended: true }));
 app.use("/", indexRouter);
 
-const PORT = 3000;
+app.use((error, req, res, next) => {
+  console.error(error);
+  res.status(500).send("Internal server error");
+});
+
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, (error) => {
   if (error) {
     throw error;
