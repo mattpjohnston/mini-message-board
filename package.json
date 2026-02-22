@@ -1,6 +1,13 @@
 {
+  "scripts": {
+    "start": "node app.js",
+    "db:seed": "node db/populatedb.js"
+  },
   "dependencies": {
+    "dotenv": "^17.3.1",
     "ejs": "^4.0.1",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "express-validator": "^7.3.1",
+    "pg": "^8.18.0"
   }
 }
