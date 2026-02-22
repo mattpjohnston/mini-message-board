@@ -13,6 +13,17 @@
         <a class="link-chip" href="/">Back to messages</a>
       </header>
 
+      <% if (errors.length > 0) { %>
+        <section class="card validation-card" aria-live="polite">
+          <h2>Please fix the following</h2>
+          <ul class="validation-errors">
+            <% for (const error of errors) { %>
+              <li><%= error.msg %></li>
+            <% } %>
+          </ul>
+        </section>
+      <% } %>
+
       <form class="card form-card" method="POST" action="/new">
         <label for="author">Author</label>
         <input
@@ -20,6 +31,8 @@
           name="author"
           type="text"
           placeholder="Your name"
+          value="<%= values.author %>"
+          maxlength="<%= limits.authorMaxLength %>"
           required
         />
 
@@ -29,6 +42,8 @@
           name="message"
           type="text"
           placeholder="Write a short message"
+          value="<%= values.message %>"
+          maxlength="<%= limits.messageMaxLength %>"
           required
         />
 

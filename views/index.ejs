@@ -14,12 +14,12 @@
       </header>
 
       <main class="stack">
-        <% for (let i = 0; i < messages.length; i++) { %>
+        <% for (const message of messages) { %>
           <article class="card message-card">
-            <h2 class="message-author"><%= messages[i].user %></h2>
-            <p class="message-text"><%= messages[i].text %></p>
-            <p class="message-date"><%= messages[i].added.toLocaleString() %></p>
-            <a class="link-chip" href="/messages/<%= i %>">Open</a>
+            <h2 class="message-author"><%= message.user %></h2>
+            <p class="message-text"><%= message.text %></p>
+            <p class="message-date"><%= message.added.toLocaleString() %></p>
+            <a class="link-chip" href="/messages/<%= message.id %>">Open</a>
           </article>
         <% } %>
       </main>
