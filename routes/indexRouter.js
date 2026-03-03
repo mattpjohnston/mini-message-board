@@ -1,11 +1,16 @@
 const { Router } = require("express");
-const indexController = require("../controllers/indexController");
+const createIndexController = require("../controllers/indexController");
 
-const indexRouter = Router();
+function createIndexRouter(db) {
+  const indexRouter = Router();
+  const indexController = createIndexController(db);
 
-indexRouter.get("/", indexController.indexGet);
-indexRouter.get("/new", indexController.newMessageGet);
-indexRouter.post("/new", indexController.newMessagePost);
-indexRouter.get("/messages/:id", indexController.messageDetailsGet);
+  indexRouter.get("/", indexController.indexGet);
+  indexRouter.get("/new", indexController.newMessageGet);
+  indexRouter.post("/new", indexController.newMessagePost);
+  indexRouter.get("/messages/:id", indexController.messageDetailsGet);
 
-module.exports = indexRouter;
+  return indexRouter;
+}
+
+module.exports = createIndexRouter;
